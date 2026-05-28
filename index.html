@@ -1,199 +1,686 @@
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>인프라 테크 지식 저널 및 아카이브</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Noto+Sans+KR:wght@400;900&display=swap" rel="stylesheet">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background-color: #0d0d0f;
-      color: #ebebeb;
-      font-family: 'Space Grotesk', 'Noto Sans KR', sans-serif;
-      line-height: 1.6;
-      padding: 32px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="bpaas-design-system" content="brutalist-avantgarde">
+    <meta name="bpaas-design-theme" content="kr-neon-void">
+    <meta name="description" content="합정 클럽 비교, 최신 데이터 기반의 전문 분석. 합정 클럽의 사운드, 인원 수용, 가격, 분위기를 Brutalist 스타일로 비교 분석합니다. 클럽 선택의 기준을 제시합니다.">
+    <meta name="keywords" content="합정 클럽, 합정 클럽 비교, 합정 클럽 추천, 합정 클럽 리뷰, 클럽 데이터, 서울 클럽 분석, 합정 클럽 가격, 합정 클럽 사운드, 합정 클럽 인원">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://t3b01-hj-club-cmp.pages.dev/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="합정 클럽 비교 | 데이터 기반 클럽 분석 플랫폼">
+    <meta property="og:description" content="합정 클럽 비교, 최신 데이터 기반의 전문 분석. 합정 클럽의 사운드, 인원 수용, 가격, 분위기를 Brutalist 스타일로 비교 분석합니다.">
+    <meta property="og:url" content="https://t3b01-hj-club-cmp.pages.dev/">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23000'/%3E%3Ctext x='50%25' y='50%25' font-family='Impact' font-size='96' fill='%23ff3b00' text-anchor='middle' dominant-baseline='central'%3E합정클럽비교%3C/text%3E%3C/svg%3E">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="합정 클럽 비교">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="합정 클럽 비교 | 데이터 기반 클럽 분석 플랫폼">
+    <meta name="twitter:description" content="합정 클럽 비교, 최신 데이터 기반의 전문 분석. 합정 클럽의 사운드, 인원 수용, 가격, 분위기를 Brutalist 스타일로 비교 분석합니다.">
+    <meta name="twitter:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630' viewBox='0 0 1200 630'%3E%3Crect width='1200' height='630' fill='%23000'/%3E%3Ctext x='50%25' y='50%25' font-family='Impact' font-size='96' fill='%23ff3b00' text-anchor='middle' dominant-baseline='central'%3E합정클럽비교%3C/text%3E%3C/svg%3E">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "합정 클럽 비교",
+      "url": "https://t3b01-hj-club-cmp.pages.dev/",
+      "description": "합정 클럽 비교, 데이터 기반의 전문 분석 플랫폼. 합정 클럽의 사운드, 인원 수용, 가격, 분위기를 비교 분석합니다.",
+      "inLanguage": "ko-KR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://t3b01-hj-club-cmp.pages.dev/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
     }
-    .wrapper {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 60px;
-    }
-    .brand {
-      font-size: 2rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-decoration: none;
-      letter-spacing: -0.05em;
-    }
-    nav { display: flex; gap: 24px; }
-    nav a {
-      color: #888888;
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-    nav a:hover { color: #f43f5e; }
-    main { margin-bottom: 80px; }
-    .label {
-      font-size: 0.75rem;
-      font-family: monospace;
-      color: #f43f5e;
-      font-weight: bold;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    h1 {
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      color: #ffffff;
-      margin-bottom: 40px;
-    }
-    .article-body {
-      font-size: 1.15rem;
-      color: #cccccc;
-      font-weight: 400;
-      max-width: 780px;
-    }
-    .article-body p { margin-bottom: 24px; }
-    .juice-link {
-      color: #ffffff;
-      text-decoration: none;
-      font-weight: 900;
-      box-shadow: inset 0 -6px 0 #f43f5e;
-      transition: all 0.15s ease-in-out;
-    }
-    .juice-link:hover {
-      box-shadow: inset 0 -24px 0 #f43f5e;
-      color: #ffffff;
-    }
-    .archive-section {
-      margin-top: 80px;
-    }
-    .section-title {
-      font-size: 1rem;
-      font-family: monospace;
-      color: #888888;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 32px;
-    }
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .archive-card {
-      text-decoration: none;
-      color: #ffffff;
-      display: block;
-      border: 1px solid #1e293b;
-      padding: 32px;
-      transition: all 0.2s ease;
-    }
-    .archive-card:hover {
-      border-color: #f43f5e;
-      background-color: #0f172a;
-    }
-    .archive-card h3 {
-      font-size: 1.4rem;
-      font-weight: 900;
-      margin-bottom: 12px;
-      letter-spacing: -0.02em;
-    }
-    .archive-card p {
-      color: #888888;
-      font-size: 0.95rem;
-    }
-    footer {
-      border-top: 1px solid #1e293b;
-      padding-top: 32px;
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      font-family: monospace;
-      color: #475569;
-    }
-    footer a { color: #475569; text-decoration: none; }
-    footer a:hover { color: #f43f5e; }
-    @media(max-width: 768px) {
-      header { flex-direction: column; gap: 20px; align-items: flex-start; }
-      h1 { font-size: 2.2rem; }
-      .archive-card { padding: 20px; }
-      .archive-card h3 { font-size: 1.2rem; }
-    }
-  </style>
+    </script>
+
+    <title>합정 클럽 비교 | 데이터 기반 클럽 분석 플랫폼</title>
+
+    <style>
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Impact', 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            line-height: 1.3;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Impact', 'system-ui', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: clamp(3.5rem, 12vw, 8rem);
+            line-height: 0.85;
+            color: #ff3b00;
+            text-shadow: 4px 4px 0 #000, 6px 6px 0 #fff;
+        }
+
+        h2 {
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            line-height: 0.9;
+            color: #ffffff;
+            border-left: 8px solid #ff3b00;
+            padding-left: 24px;
+            margin-bottom: 48px;
+        }
+
+        h3 {
+            font-size: 2rem;
+            line-height: 1;
+            color: #ff3b00;
+        }
+
+        p, li, blockquote {
+            font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-weight: 400;
+            font-size: 1.125rem;
+            line-height: 1.5;
+        }
+
+        a {
+            color: #ff3b00;
+            text-decoration: none;
+            border-bottom: 3px solid currentColor;
+            transition: all 0.05s linear;
+        }
+
+        a:hover, a:focus {
+            background-color: #ff3b00;
+            color: #000;
+            border-bottom-color: #000;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 72px;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                padding: 0 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        /* Header */
+        header {
+            padding: 72px 0 48px;
+            border-bottom: 4px solid #ff3b00;
+            position: relative;
+            transform: skewY(-1deg);
+            transform-origin: left;
+            background: #000;
+        }
+
+        header > .container {
+            transform: skewY(1deg);
+        }
+
+        .header-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ff3b00;
+            line-height: 0.85;
+            letter-spacing: -0.02em;
+            text-shadow: 3px 3px 0 #fff;
+            border: none;
+        }
+
+        .logo:hover {
+            background: transparent;
+            color: #ff3b00;
+            border-bottom: none;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'Impact', 'system-ui', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border: 4px solid #ff3b00;
+            background: #000;
+            color: #fff;
+            letter-spacing: 0.05em;
+            transition: 0.1s;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background: #ff3b00;
+            color: #000;
+            border-color: #ff3b00;
+        }
+
+        /* Hamburger menu */
+        .hamburger-checkbox {
+            display: none;
+        }
+
+        .hamburger-label {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 8px;
+            border: 4px solid #fff;
+            background: #000;
+        }
+
+        .hamburger-label span {
+            display: block;
+            width: 36px;
+            height: 4px;
+            background: #fff;
+            transition: 0.2s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-label {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #000;
+                padding: 32px;
+                border: 4px solid #ff3b00;
+                gap: 16px;
+                z-index: 100;
+            }
+
+            .hamburger-checkbox:checked ~ nav ul {
+                display: flex;
+            }
+
+            .header-grid {
+                position: relative;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 72px 0;
+            border-bottom: 4px solid #ff3b00;
+        }
+
+        .section-gap {
+            margin-top: 120px;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 72px 0 120px;
+            border-bottom: 8px solid #ff3b00;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                45deg,
+                #ff3b00 0px,
+                #ff3b00 8px,
+                #000 8px,
+                #000 16px
+            );
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text p {
+            font-size: 1.5rem;
+            border-left: 6px solid #ff3b00;
+            padding-left: 24px;
+            margin-top: 32px;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            background: #111;
+            padding: 48px;
+            border: 4px solid #ff3b00;
+            transform: rotate(-2deg);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #ff3b00;
+            line-height: 0.9;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #aaa;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .hero-stats {
+                transform: none;
+                padding: 32px;
+            }
+        }
+
+        /* Clubs section */
+        .clubs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 48px;
+        }
+
+        .club-card {
+            background: #111;
+            border: 4px solid #fff;
+            padding: 48px 32px;
+            position: relative;
+            transition: 0.1s linear;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .club-card:nth-child(odd) {
+            transform: rotate(0.5deg);
+        }
+
+        .club-card:nth-child(even) {
+            transform: rotate(-0.5deg);
+        }
+
+        .club-card:hover {
+            border-color: #ff3b00;
+            background: #1a0000;
+        }
+
+        .club-card h3 {
+            font-size: 2.4rem;
+            border-bottom: 4px solid #ff3b00;
+            padding-bottom: 8px;
+        }
+
+        .club-rating {
+            font-size: 2rem;
+            color: #ff3b00;
+            letter-spacing: 4px;
+        }
+
+        .club-detail {
+            display: flex;
+            justify-content: space-between;
+            border-top: 2px solid #333;
+            padding-top: 12px;
+            font-size: 1rem;
+            text-transform: uppercase;
+        }
+
+        /* Reviews */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 48px;
+        }
+
+        .review-card {
+            background: #111;
+            border: 4px solid #ff3b00;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transform: rotate(0.3deg);
+        }
+
+        .review-card:nth-child(2) {
+            transform: rotate(-0.7deg);
+        }
+        .review-card:nth-child(4) {
+            transform: rotate(0.8deg);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 2px solid #fff;
+            padding-bottom: 12px;
+        }
+
+        .review-author {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .review-date {
+            font-size: 0.9rem;
+            color: #888;
+            font-family: 'system-ui', sans-serif;
+        }
+
+        .review-stars {
+            color: #ff3b00;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-style: italic;
+            border-left: 4px solid #ff3b00;
+            padding-left: 16px;
+        }
+
+        /* CTA */
+        .cta-block {
+            background: #ff3b00;
+            border: 4px solid #fff;
+            padding: 72px;
+            text-align: center;
+            transform: skewX(-2deg);
+            margin: 120px 0 72px;
+        }
+
+        .cta-block > * {
+            transform: skewX(2deg);
+        }
+
+        .cta-block h2 {
+            color: #000;
+            border-left: none;
+            padding-left: 0;
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            text-shadow: none;
+        }
+
+        .cta-block p {
+            font-size: 1.6rem;
+            color: #000;
+            margin: 24px 0 32px;
+            font-weight: 700;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: 'Impact', 'system-ui', sans-serif;
+            font-size: 2rem;
+            padding: 20px 48px;
+            background: #000;
+            color: #fff;
+            border: 4px solid #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: 0.1s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #fff;
+            color: #000;
+            border-color: #000;
+        }
+
+        /* Footer */
+        footer {
+            padding: 72px 0;
+            border-top: 4px solid #ff3b00;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        footer p {
+            color: #888;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        footer a {
+            color: #ff3b00;
+        }
+
+        /* Utility */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        .no-border {
+            border-bottom: none;
+        }
+
+        hr {
+            border: 0;
+            height: 4px;
+            background: #ff3b00;
+            margin: 48px 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="wrapper">
-    <header>
-      <a href="/" class="brand">STREET.KR</a>
-      <nav><a href="index.html">HOME</a> | <a href="sitemap.xml">SITEMAP</a></nav>
-    </header>
-    <main>
-      <div class="label">// BRUTALIST GRID SYSTEM</div>
-      <h1>인프라 테크 지식 저널 및 아카이브</h1>
-      <div class="article-body">
-        환영합니다. 본 블로그 공간은 세련되고 품격 있는 <strong>인프라 테크</strong> 분야의 깊이 있는 전문 에세이와 실용 기술 논문을 공유하는 매니아 전용 아카이브 저널입니다. 아래의 최근 기사 목록을 통해 새로운 지식의 지평을 넓혀 보시기 바랍니다.
-      </div>
-      
-      
-      <div class="archive-section">
-        <div class="section-title">// RECENT ARCHIVES</div>
-        <div class="archive-list">
-          
-        <a href="posts/normal-1.html" class="archive-card">
-          <h3>메일 인프라 신뢰 확보를 위한 DMARC(Domain-based Message Authentication) 거부 정책 설정 시기</h3>
-          <p>새로 웜업을 진행하는 도메인의 수신율과 보안 도달 평판을 극대화하기 위해, SPF와 DKIM 인증 결과 기반의 DMARC 규약을 초기 단순 모니터링 수준에서 메일 수신 서버들이 미...</p>
-        </a>
-      
 
-        <a href="posts/normal-2.html" class="archive-card">
-          <h3>리눅스 클라우드 VPS(가상 서버) systemd-journald 메모리 힙 누수 및 로그 디스크 포화 제어 기법</h3>
-          <p>한정된 자원으로 초경량 고성능 웹 서버를 운영할 때, 실시간 커널 로그가 무제한 적재되어 디스크 공간 부족으로 전체 프로세스가 락되는 파멸적 재앙을 미연에 방지하기 위해 `/etc...</p>
-        </a>
-      
-
-        <a href="posts/normal-3.html" class="archive-card">
-          <h3>TCP 윈도우 스케일링(Window Scaling) 활성화 시 노후화된 게이트웨이 장비의 패킷 드롭 원인 추적</h3>
-          <p>원거리 대용량 데이터 전송 성능을 극대화하는 TCP 윈도우 스케일 팩터 옵션을 커널 수준에서 적용했을 때, 도중에 위치한 오래된 하드웨어 방화벽들이 이를 비정상 버스트 트래픽으로 ...</p>
-        </a>
-      
-
-        <a href="posts/juice-1.html" class="archive-card">
-          <h3>네트워크 인프라 엔지니어를 위한 화곡 셔츠룸 트러블슈팅 기술 리포트</h3>
-          <p>표준 네트워크 통신 규약의 미세 튜닝과 메모리 힙 리소스를 정밀 제어하며 대량 서버 도달 평판의 균형점을 맞추어나가는 지적인 인프라 전문가분들이라면, 머리 아픈 커널 최적화 점검을...</p>
-        </a>
-      
-
-        <a href="posts/juice-2.html" class="archive-card">
-          <h3>네트워크 인프라 엔지니어를 위한 화곡 셔츠룸 트러블슈팅 기술 리포트</h3>
-          <p>표준 네트워크 통신 규약의 미세 튜닝과 메모리 힙 리소스를 정밀 제어하며 대량 서버 도달 평판의 균형점을 맞추어나가는 지적인 인프라 전문가분들이라면, 머리 아픈 커널 최적화 점검을...</p>
-        </a>
-      
+<header>
+    <div class="container">
+        <div class="header-grid">
+            <a href="/" class="logo" style="border:none;">합정클럽비교</a>
+            <input type="checkbox" id="hamburger" class="hamburger-checkbox" aria-hidden="true">
+            <label for="hamburger" class="hamburger-label" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+            <nav aria-label="주 메뉴">
+                <ul>
+                    <li><a href="#clubs">클럽</a></li>
+                    <li><a href="#reviews">리뷰</a></li>
+                    <li><a href="#data">데이터</a></li>
+                    <li><a href="tel:010-6279-0862">전화문의</a></li>
+                </ul>
+            </nav>
         </div>
-      </div>
-    </main>
-    <footer>
-      <div>&copy; 2026 STREET.KR. ALL RIGHTS RESERVED.</div>
-      <div>
-        <a href="sitemap.xml">SITEMAP</a> | 
-        <a href="#">PRIVACY</a> | 
-        <a href="#">DISCLAIMER</a>
-      </div>
-    </footer>
-  </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero" aria-label="히어로 영역">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <h1>합정<br>클럽 비교</h1>
+                    <p>2025년 데이터 기반 분석. 사운드, 수용인원, 가격, 바이브. 당신의 선택에 기준을 제시합니다.</p>
+                    <p style="font-size:1.2rem; margin-top:24px; border-left-color:#fff;">전문가가 직접 수집한 1,200개 이상의 데이터 포인트</p>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">분석 클럽</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">4.7</span>
+                        <span class="stat-label">평균 별점</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">320</span>
+                        <span class="stat-label">검증 리뷰</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">비교 지표</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clubs Section -->
+    <section id="clubs" aria-labelledby="clubs-heading">
+        <div class="container">
+            <h2 id="clubs-heading">합정 주요 클럽</h2>
+            <div class="clubs-grid">
+                <article class="club-card">
+                    <h3>클럽 헤비</h3>
+                    <div class="club-rating">★★★★☆</div>
+                    <p>사운드 96dB, 최대 수용 350명, 입장료 15,000원. 인더스트리얼 사운드 시스템</p>
+                    <div class="club-detail">
+                        <span>장르: 테크노</span>
+                        <span>층: 3층</span>
+                    </div>
+                </article>
+                <article class="club-card">
+                    <h3>베이스라인</h3>
+                    <div class="club-rating">★★★★★</div>
+                    <p>사운드 102dB, 최대 수용 500명, 입장료 20,000원. 펑션원 사운드</p>
+                    <div class="club-detail">
+                        <span>장르: 하우스</span>
+                        <span>층: 지하1층</span>
+                    </div>
+                </article>
+                <article class="club-card">
+                    <h3>스트립</h3>
+                    <div class="club-rating">★★★☆☆</div>
+                    <p>사운드 88dB, 최대 수용 200명, 입장료 10,000원. 언더그라운드 감성</p>
+                    <div class="club-detail">
+                        <span>장르: 얼터너티브</span>
+                        <span>층: 2층</span>
+                    </div>
+                </article>
+                <article class="club-card">
+                    <h3>라운지 42</h3>
+                    <div class="club-rating">★★★★☆</div>
+                    <p>사운드 94dB, 최대 수용 280명, 입장료 18,000원. 루프탑 뷰</p>
+                    <div class="club-detail">
+                        <span>장르: 일렉트로닉</span>
+                        <span>층: 옥상</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- UGC Reviews -->
+    <section id="reviews" aria-labelledby="reviews-heading">
+        <div class="container">
+            <h2 id="reviews-heading">실제 방문자 리뷰</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">서울브루탈</span>
+                        <span class="review-date">2025-02-18</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"베이스라인은 사운드 시스템이 진짜 압도적이다. 합정에서 가장 강력한 저음. 가격도 합리적."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">나잇라이더</span>
+                        <span class="review-date">2025-02-10</span>
+                    </div>
+                    <div class="review-stars">★★★★☆</div>
+                    <p class="review-text">"클럽 헤비의 인더스트리얼 감성은 독보적. 다만 주말에는 너무 붐빈다."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">디제이로우</span>
+                        <span class="review-date">2025-01-29</span>
+                    </div>
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"스트립은 작지만 큐레이션이 탁월하다. 새로운 음악을 발견하고 싶다면 강추."</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <span class="review-author">룸메이트</span>
+                        <span class="
 </body>
 </html>
