@@ -1,214 +1,71 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="bpaas-design-system" content="brutalist-avantgarde">
-    <meta name="bpaas-design-theme" content="kr-neon-void">
-    <meta name="description" content="합정 클럽 선택을 위한 최종 판단 기준. 사운드, 수용 인원, 가격, 분위기까지 데이터로 증명하는 합정 클럽 비교 정보. 신뢰할 수 있는 클럽 데이터베이스.">
-    <meta name="keywords" content="합정 클럽, 합정 클럽 비교, 합정 클럽 정보, 합정 클럽 데이터, 합정 클럽 사운드, 합정 클럽 인원, 합정 클럽 가격, 합정 클럽 분위기, 클럽 선택 기준">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://t3b01-hj-club-cmp.pages.dev/info/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="합정 클럽 비교 | 정보 — 데이터 기반 클럽 분석">
-    <meta property="og:description" content="합정 클럽의 모든 정보를 한곳에. 사운드, 인원, 가격, 분위기 데이터로 검증된 합정 클럽 비교 정보 페이지.">
-    <title>합정 클럽 비교 | 정보 — 데이터 기반 클럽 분석</title>
-    <style>
-        /* ===== Brutalist Avant-Garde — kr-neon-void ===== */
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html { font-size: 16px; scroll-behavior: smooth; }
-        body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0b;
-            color: #e0e0e0;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        h1, h2, h3, h4, h5, h6 { font-weight: 800; letter-spacing: -0.02em; color: #f0f0f0; }
-        h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.1; margin-bottom: 1rem; border-left: 6px solid #ff0055; padding-left: 0.75rem; }
-        h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid #ff0055; padding-bottom: 0.4rem; }
-        h3 { font-size: clamp(1.2rem, 2vw, 1.6rem); margin-top: 1.8rem; margin-bottom: 0.6rem; }
-        p, li, blockquote { font-size: 1rem; line-height: 1.7; margin-bottom: 0.8rem; color: #c8c8c8; }
-        a { color: #ff6b9d; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-        a:hover, a:focus { border-bottom-color: #ff6b9d; outline: none; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
-        @media (max-width: 900px) { .container { padding: 0 1rem; } }
-        @media (max-width: 480px) { html { font-size: 14px; } }
-
-        /* Header / Nav */
-        header { background: #121214; border-bottom: 2px solid #ff0055; position: sticky; top: 0; z-index: 100; }
-        .nav-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.8rem 1.5rem; max-width: 1200px; margin: 0 auto; }
-        .nav-logo { font-size: 1.8rem; font-weight: 900; color: #ff0055; letter-spacing: -0.04em; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { font-weight: 600; font-size: 0.95rem; color: #ccc; text-transform: uppercase; letter-spacing: 0.08em; border: none; }
-        .nav-links a:hover { color: #ff0055; }
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hamburger-menu { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
-            .hamburger-menu span { width: 28px; height: 3px; background: #fff; border-radius: 2px; }
-            .nav-bar { position: relative; }
-            .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: #121214; padding: 1rem 2rem; gap: 1rem; border-bottom: 2px solid #ff0055; }
-        }
-        .tel-link { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.4rem 1rem; background: #ff0055; color: #fff !important; font-weight: 700; border-radius: 4px; border: none !important; font-size: 0.9rem; }
-        .tel-link:hover { background: #cc0044; }
-
-        /* Hero */
-        .hero { padding: 3rem 0; border-bottom: 1px solid #222; }
-        .hero h1 { margin-bottom: 0.4rem; }
-        .hero .subtitle { font-size: 1.15rem; color: #aaa; margin-top: -0.4rem; }
-
-        /* Section */
-        section { padding: 2.5rem 0; border-bottom: 1px solid #1e1e1e; }
-        section:last-of-type { border-bottom: none; }
-
-        /* Cards */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
-        .card { background: #161618; border: 1px solid #2a2a2e; padding: 1.5rem; border-radius: 6px; transition: border-color 0.2s; }
-        .card:hover { border-color: #ff0055; }
-        .card h3 { margin-top: 0; margin-bottom: 0.8rem; font-size: 1.15rem; }
-        .card p { font-size: 0.95rem; margin-bottom: 0.4rem; }
-        .card .stat { font-size: 1.6rem; font-weight: 800; color: #ff6b9d; display: block; margin: 0.5rem 0; }
-        .card .label { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; }
-
-        /* Table (data) */
-        .data-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        .data-table th, .data-table td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #2a2a2e; }
-        .data-table th { background: #1c1c1f; font-weight: 700; color: #ff6b9d; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.06em; }
-        .data-table td { font-size: 0.95rem; }
-        .data-table tr:hover td { background: #1e1e22; }
-        @media (max-width: 600px) { .data-table { font-size: 0.85rem; } }
-
-        /* FAQ */
-        .faq-list { margin: 1.5rem 0; }
-        .faq-item { margin-bottom: 1.2rem; }
-        .faq-question { font-weight: 700; font-size: 1.05rem; color: #f0f0f0; margin-bottom: 0.3rem; cursor: default; }
-        .faq-answer { padding-left: 0.8rem; border-left: 2px solid #ff6b9d; color: #b0b0b0; }
-
-        /* Footer */
-        footer { background: #0e0e10; padding: 2rem 0; margin-top: auto; border-top: 2px solid #ff0055; text-align: center; color: #666; font-size: 0.85rem; }
-        footer a { color: #999; }
-        footer a:hover { color: #ff6b9d; }
-
-        /* Utility */
-        .highlight { color: #ff6b9d; font-weight: 700; }
-        .small-meta { color: #777; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="bpaas-design-system" content="organic-stripe">
+<meta name="bpaas-design-theme" content="kr-organic-stripe">
+<title>합정 클럽 비교 | 시설 및 운영 정책 상세 가이드</title>
+<meta name="description" content="합정 클럽 선택을 고민하는 당신을 위해 공간의 음악적 색깔, 운영 정책, 시설 인프라를 객관적으로 분석합니다. 당신의 취향에 맞는 공간을 찾는 기준을 제시합니다.">
+<meta name="keywords" content="합정 클럽 비교, 합정 클럽 입문, 클럽 방문 가이드, 합정 밤문화, 클럽 선택 기준">
+<link rel="canonical" href="https://hapjeong-club-guide.namanavi.com/about.html">
+<style>
+:root { --bg: #ffffff; --text: #000000; --accent: #ff3300; }
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; margin: 0; padding: 0; }
+.r-side-cqxr { max-width: 900px; margin: 0 auto; padding: 20px; }
+header { border-bottom: 2px solid var(--text); padding: 40px 0; }
+h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: -2px; }
+nav ul { display: flex; list-style: none; gap: 20px; padding: 0; }
+section { margin: 60px 0; }
+.q-head-nk2p { font-size: 1.5rem; font-weight: bold; border-left: 4px solid var(--accent); padding-left: 15px; margin-bottom: 20px; }
+.m-list-1tbc { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+footer { border-top: 1px solid #ccc; padding: 20px 0; text-align: center; font-size: 0.8rem; }
+@media (max-width: 768px) { .m-list-1tbc { grid-template-columns: 1fr; } }
+</style>
+  <meta property="og:url" content="https://hapjeong-club-guide.namanavi.com/about.html">
 </head>
 <body>
-
+<div class="r-side-cqxr">
 <header>
-    <nav class="nav-bar container">
-        <div class="nav-logo">⚡ 합정클럽</div>
-        <ul class="nav-links">
-            <li><a href="/">홈</a></li>
-            <li><a href="/compare/">비교</a></li>
-            <li><a href="/info/" style="color:#ff0055;">정보</a></li>
-            <li><a href="/data/">데이터</a></li>
-            <li><a href="/contact/" class="tel-link">문의</a></li>
-        </ul>
-        <div class="hamburger-menu" onclick="this.nextElementSibling.classList.toggle('open')" role="button" tabindex="0" aria-label="메뉴 열기">
-            <span></span><span></span><span></span>
-        </div>
-    </nav>
+<nav>
+<ul>
+<li><a href="/">홈</a></li>
+<li><a href="/info">정보</a></li>
+<li><a href="/guide">가이드</a></li>
+</ul>
+</nav>
+<h1>합정 클럽 비교</h1>
 </header>
 
-<main>
-    <section class="hero">
-        <div class="container">
-            <h1>합정 클럽 정보</h1>
-            <p class="subtitle">데이터로 검증된 합정 클럽의 모든 것. 사운드, 수용 인원, 가격, 분위기까지 정확한 정보를 제공합니다.</p>
-        </div>
-    </section>
+<section>
+<div class="q-head-nk2p">음악적 정체성과 공간의 분위기</div>
+<p>합정 지역의 클럽들은 홍대입구의 대형 상업적 공간들과는 확연히 다른 결을 유지합니다. 이곳의 공간들은 특정 장르에 특화된 큐레이션을 제공하며, 대중적인 팝보다는 테크노, 하우스, 혹은 실험적인 전자음악을 중심으로 운영됩니다. 방문 전 해당 공간의 SNS 채널을 통해 당일 라인업과 음악적 성향을 반드시 확인하십시오. 음악은 공간의 분위기를 결정짓는 가장 중요한 요소이며, 자신의 취향과 맞지 않는 음악은 밤 전체를 지루하게 만들 수 있습니다.</p>
+<p>또한, 공간의 규모와 밀집도를 고려해야 합니다. 합정 클럽은 대부분 소규모 지하 공간으로 운영되므로, 사람이 몰리는 피크 타임에는 물리적인 제약이 큽니다. 여유로운 분위기를 선호한다면 오픈 직후인 11시 전후를, 에너제틱한 환경을 원한다면 자정 이후의 타임라인을 선택하는 것이 전략적입니다. 공간의 크기가 작을수록 음악과 댄스 플로어의 유대감은 강해지지만, 그만큼 개인 공간의 확보는 어려워진다는 점을 명심하십시오.</p>
+</section>
 
-    <section>
-        <div class="container">
-            <h2>핵심 스펙 요약</h2>
-            <p>2024년 하반기 기준, 합정 지역 7개 주요 클럽의 객관적 데이터를 수집·분석했습니다. 아래 표는 각 클럽의 핵심 지표를 요약한 것입니다.</p>
+<section>
+<div class="q-head-nk2p">시설 기준과 운영 정책의 현실</div>
+<p>클럽 방문 시 가장 실망하는 지점은 시설의 노후함이나 냉난방 문제, 혹은 불친절한 응대입니다. 합정의 많은 클럽은 독립적인 레이블이나 커뮤니티가 운영하는 경우가 많아, 화려한 인테리어보다는 기능성에 집중합니다. 입장료 지불 방식이 현금 위주인지, 카드 결제가 가능한지, 혹은 사전 예매 시스템을 활용하는지 사전에 숙지하는 것이 현명합니다. 예상치 못한 결제 방식은 입구에서의 불필요한 혼선을 야기합니다.</p>
+<p>드레스코드와 보안 정책 역시 각 공간마다 엄격한 기준이 존재합니다. 합정 지역의 클럽은 대체로 자유로운 복장을 지향하지만, 타인에게 불쾌감을 주는 복장이나 지나친 고가의 차림은 오히려 공간의 분위기를 저해한다고 판단하여 입장을 제한할 수 있습니다. 가장 좋은 복장은 그 공간의 음악과 분위기에 자연스럽게 녹아들 수 있는 '편안함'과 '개성'의 조화입니다. 보안 요원이나 운영진의 안내에 따르는 것은 타인과 나의 안전을 위한 최소한의 에티켓입니다.</p>
+</section>
 
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>클럽명</th>
-                        <th>사운드 시스템</th>
-                        <th>최대 인원</th>
-                        <th>입장료(주말)</th>
-                        <th>음악 장르</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>클럽 A</td>
-                        <td>Funktion-One (4-way)</td>
-                        <td>350명</td>
-                        <td>₩25,000</td>
-                        <td>테크노 / 하우스</td>
-                    </tr>
-                    <tr>
-                        <td>클럽 B</td>
-                        <td>d&b audiotechnik V-시리즈</td>
-                        <td>500명</td>
-                        <td>₩30,000</td>
-                        <td>힙합 / R&amp;B</td>
-                    </tr>
-                    <tr>
-                        <td>클럽 C</td>
-                        <td>L-Acoustics K2</td>
-                        <td>280명</td>
-                        <td>₩20,000</td>
-                        <td>인디 / 일렉트로닉</td>
-                    </tr>
-                    <tr>
-                        <td>클럽 D</td>
-                        <td>Meyer Sound LINA</td>
-                        <td>420명</td>
-                        <td>₩22,000</td>
-                        <td>테크노 / 미니멀</td>
-                    </tr>
-                    <tr>
-                        <td>클럽 E</td>
-                        <td>Void Acoustics Stasys</td>
-                        <td>600명</td>
-                        <td>₩28,000</td>
-                        <td>EDM / 팝</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p class="small-meta">※ 데이터 출처: 현장 측정 및 운영사 공개 정보 (2024.09 기준)</p>
-        </div>
-    </section>
+<section>
+<div class="q-head-nk2p">상황별 방문 가이드</div>
+<div class="m-list-1tbc">
+<div>
+<h3>혼자 방문할 때</h3>
+<p>혼자 클럽을 찾는다면 대형 스테이지보다는 바(Bar) 좌석이 있는 곳을 추천합니다. 바텐더와 소통하거나 공간의 전체적인 흐름을 관찰하기에 좋습니다. 처음 가는 곳이라면 너무 늦은 시간보다는 초반에 입장하여 공간에 적응할 시간을 가지는 것이 안전합니다.</p>
+</div>
+<div>
+<h3>그룹으로 방문할 때</h3>
+<p>여러 명과 함께라면 동선 확보가 최우선입니다. 스테이지 중앙보다는 측면이나 뒷좌석을 거점으로 삼아 일행을 잃어버리지 않도록 주의하십시오. 인원이 많을 경우 사전 문의를 통해 단체 수용 가능 여부를 확인하는 것이 매너입니다.</p>
+</div>
+</div>
+</section>
 
-    <section>
-        <div class="container">
-            <h2>클럽별 상세 분석</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <h3>클럽 A — 사운드 퀄리티 최상</h3>
-                    <p>Funktion-One 4-way 시스템은 350명 수용 공간에 최적화. 저역 해상도가 뛰어나며 1kHz~4kHz 대역의 명료도가 탁월합니다. SPL 최대 126dB.</p>
-                    <span class="stat">92 / 100</span>
-                    <span class="label">사운드 평점</span>
-                </div>
-                <div class="card">
-                    <h3>클럽 B — 수용 인원 최대</h3>
-                    <p>500명 수용 가능한 합정 최대 규모. d&b V-시리즈는 균일한 커버리지를 제공하며, 힙합 장르의 저역 펀치감이 뛰어납니다. 혼잡도 지수 78% (주말 평균).</p>
-                    <span class="stat">500</span>
-                    <span class="label">최대 인원</span>
-                </div>
-                <div class="card">
-                    <h3>클럽 C — 가성비 최적</h3>
-                    <p>입장료 20,000원에 L-Acoustics K2 시스템. 280명 규모로 인티메이트한 분위기. 인디/일렉트로닉 특화, 객석-무대 거리 8m로 몰입감 높음.</p>
-                    <span class="stat">₩20,000</span>
-                    <span class="label">주말 입장료</span>
-                </div>
-                <div class="card">
-                    <h3>클럽 D — 테크노 성지</h3>
-                    <p>Meyer Sound LINA 어레이는 정밀한 스테이징으로 유명. 420명 수용, 미니멀 테크노에 최적화된 음향 설계. 주파수 응답 35Hz~20kHz ±3dB.</p>
-                    <span class="stat">94 / 100</span>
-                    <span class="label">음향 정밀도</span>
-                </div>
-                <div class="card">
-                    <h3>클럽 E — 대형 EDM 스펙</h3>
-                    <p>Void Acoustics Stasys 시스템으로 600명 수용. E
+<footer>
+<p>© 2024 합정 클럽 가이드. 모든 권리는 당사에 있습니다.</p>
+</footer>
+</div>
 </body>
 </html>
